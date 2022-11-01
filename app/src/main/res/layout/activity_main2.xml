@@ -20,21 +20,19 @@
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="77dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.278">
+            app:layout_constraintVertical_bias="0.340">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -43,7 +41,7 @@
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center" />
@@ -51,7 +49,7 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center" />
@@ -60,21 +58,19 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="77dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.410">
+            app:layout_constraintVertical_bias="0.480">
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -83,7 +79,7 @@
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center" />
@@ -91,7 +87,7 @@
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -101,20 +97,19 @@
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="77dp"
-            android:layout_marginTop="80dp"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.540">
+            app:layout_constraintVertical_bias="0.620">
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center" />
@@ -122,7 +117,7 @@
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center" />
@@ -130,7 +125,7 @@
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="100dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center" />
