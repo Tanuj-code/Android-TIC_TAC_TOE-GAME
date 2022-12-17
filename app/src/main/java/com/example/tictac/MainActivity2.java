@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
-    int t=1;
+    int ct = 0, emp=0;
     String s="";
     int col=0;
     @Override
@@ -26,38 +26,45 @@ public class MainActivity2 extends AppCompatActivity {
         TextView txt= findViewById(id);
         txt.setBackgroundColor(Color.DKGRAY);
         txt.setTextColor(Color.rgb(255, 255, 255));
-        txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(txt.getText().toString().equals("X") || txt.getText().toString().equals("O")){
-                    return;
-                }
-                if(t==1){
-                    txt.setText("X");
-                    txt.setBackgroundColor(Color.BLACK);
-                    t=0;
-                    col++;
-                }
+        txt.setOnClickListener(view -> {
+            if(txt.getText().toString().equals("X") || txt.getText().toString().equals("O")){
+                return;
+            }
+
+                txt.setText("X");
+                txt.setBackgroundColor(Color.BLACK);
+                col++;
+                if(!check()) {
+                    if (!twoO() ) {
+
+                        if (!twoX()) {
+
+                            one();
+                            boolean a = check();
+
+                        } else {
+                            boolean a = check();
+                        }
+                    }
+                        else{
+                            boolean a = check();
+                        }
+                    }
                 else{
-                    txt.setText("O");
-                    txt.setBackgroundColor(Color.rgb(255, 87, 34));
-                    t=1;
-                    col++;
+                    finish();
                 }
 
-                check();
-            }
         });
     }
     }
-   public void check(){
+   public boolean check(){
         for(int i=2; i<=8; i+=3){
             int ct=0;
             String l="Q";
-            for(int j=i+0; j<i+3; j++){
+            for(int j=i; j<i+3; j++){
                 int id=getResources().getIdentifier("textView"+j, "id", getPackageName());
                 TextView txt= findViewById(id);
-                if(l=="Q" && !s.equals(txt.getText().toString())){
+                if(l.equals("Q") && !s.equals(txt.getText().toString())){
                     ct++;
                     l=txt.getText().toString();
                     continue;
@@ -67,23 +74,24 @@ public class MainActivity2 extends AppCompatActivity {
                 }
             }
             if(ct==3){
-                for(int j=i+0; j<i+3; j++) {
+                for(int j=i; j<i+3; j++) {
                     int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
                     TextView tx = findViewById(id);
                     tx.setBackgroundColor(Color.rgb(255, 255, 255));
                     tx.setTextColor(Color.BLACK);
                 }
                 finish();
+                return true;
             }
 
         }
        for(int i=2; i<=4; i++){
            int ct=0;
            String l="Q";
-           for(int j=i+0; j<=i+6; j+=3){
+           for(int j=i; j<=i+6; j+=3){
                int id=getResources().getIdentifier("textView"+j, "id", getPackageName());
                TextView txt= findViewById(id);
-               if(l=="Q" && !s.equals(txt.getText().toString())){
+               if(l.equals("Q") && !s.equals(txt.getText().toString())){
                    ct++;
                    l=txt.getText().toString();
                    continue;
@@ -93,22 +101,23 @@ public class MainActivity2 extends AppCompatActivity {
                }
            }
            if(ct==3){
-               for(int j=i+0; j<=i+6; j+=3) {
+               for(int j=i; j<=i+6; j+=3) {
                    int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
                    TextView tx = findViewById(id);
                    tx.setBackgroundColor(Color.rgb(255, 255, 255));
                    tx.setTextColor(Color.BLACK);
                }
                finish();
+               return true;
            }
-           ct=0;
+
        }
        int ct=0;
        String l="Q";
        for(int j=2; j<=10; j+=4){
            int id=getResources().getIdentifier("textView"+j, "id", getPackageName());
            TextView txt= findViewById(id);
-           if(l=="Q" && !s.equals(txt.getText().toString())){
+           if(l.equals("Q") && !s.equals(txt.getText().toString())){
                ct++;
                l=txt.getText().toString();
                continue;
@@ -125,13 +134,14 @@ public class MainActivity2 extends AppCompatActivity {
                tx.setTextColor(Color.BLACK);
            }
            finish();
+           return true;
        }
        ct=0;
        l="Q";
        for(int j=4; j<=8; j+=2){
            int id=getResources().getIdentifier("textView"+j, "id", getPackageName());
            TextView txt= findViewById(id);
-           if(l=="Q" && !s.equals(txt.getText().toString())){
+           if(l.equals("Q") && !s.equals(txt.getText().toString())){
                ct++;
                l=txt.getText().toString();
                continue;
@@ -148,9 +158,240 @@ public class MainActivity2 extends AppCompatActivity {
                tx.setTextColor(Color.BLACK);
            }
            finish();
+           return true;
        }
-       if(col==9){
+       if(col>=9){
            finish();
+           return true;
        }
+       return false;
    }
+   public boolean twoO() {
+
+       for (int i = 2; i <= 8; i += 3) {
+           ct=0;
+           emp=0;
+           for(int j=i; j<i+3; j++){
+           int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+           TextView tx = findViewById(id);
+           if (tx.getText().toString().equals("O")) {
+               ct++;
+           }
+           else if(tx.getText().toString().equals("")){
+               emp++;
+           }
+       }
+           if(ct==2 && emp==1){
+               for(int j=i; j<i+3; j++) {
+                   int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+                   TextView tx = findViewById(id);
+                   if(tx.getText().toString().equals("")){
+                       tx.setText("O");
+                       tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                       col++;
+                       return true;
+                   }
+               }
+           }
+   }
+
+       for(int i=2; i<=4; i++) {
+           ct=0;
+           emp=0;
+           for (int j = i; j <= i + 6; j += 3) {
+               int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+               TextView tx = findViewById(id);
+               if (tx.getText().toString().equals("O")) {
+                   ct++;
+               }
+               else if(tx.getText().toString().equals("")){
+                   emp++;
+               }
+           }
+           if(ct==2 && emp==1){
+               for(int j=i; j<= i + 6; j+= 3) {
+                   int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+                   TextView tx = findViewById(id);
+                   if(tx.getText().toString().equals("")){
+                       tx.setText("O");
+                       tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                       col++;
+                       return true;
+                   }
+               }
+           }
+       }
+       ct=0;
+       emp=0;
+       for(int j=2; j<=10; j+=4) {
+           int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+           TextView tx = findViewById(id);
+           if (tx.getText().toString().equals("O")) {
+               ct++;
+           }
+           else if(tx.getText().toString().equals("")){
+               emp++;
+           }
+       }
+       if(ct==2 && emp==1){
+           for(int j=2; j<=10; j+=4) {
+               int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+               TextView tx = findViewById(id);
+               if(tx.getText().toString().equals("")){
+                   tx.setText("O");
+                   tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                   col++;
+                   return true;
+               }
+           }
+       }
+       ct=0;
+       emp=0;
+       for(int j=4; j<=8; j+=2){
+           int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+           TextView tx = findViewById(id);
+           if (tx.getText().toString().equals("O")) {
+               ct++;
+           }
+           if(tx.getText().toString().equals("")){
+               emp++;
+           }
+       }
+       if(ct==2 && emp==1){
+           for(int j=2; j<=10; j+=4) {
+               int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+               TextView tx = findViewById(id);
+               if(tx.getText().toString().equals("")){
+                   tx.setText("O");
+                   tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                   col++;
+                   return true;
+               }
+           }
+       }
+       return false;
+   }
+
+    public boolean twoX() {
+
+        for (int i = 2; i <= 8; i += 3) {
+            ct=0;
+            emp=0;
+            for(int j=i; j<i+3; j++){
+                int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+                TextView tx = findViewById(id);
+                if (tx.getText().toString().equals("X")) {
+                    ct++;
+                }
+                else if(tx.getText().toString().equals("")){
+                    emp++;
+                }
+            }
+            if(ct==2 && emp==1){
+                for(int j=i; j<i+3; j++) {
+                    int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+                    TextView tx = findViewById(id);
+                    if(tx.getText().toString().equals("")){
+                        tx.setText("O");
+                        tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                        col++;
+                        return true;
+                    }
+                }
+            }
+        }
+
+        for(int i=2; i<=4; i++) {
+            ct=0;
+            emp=0;
+            for (int j = i; j <= i + 6; j += 3) {
+                int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+                TextView tx = findViewById(id);
+                if (tx.getText().toString().equals("X")) {
+                    ct++;
+                }
+                else if(tx.getText().toString().equals("")){
+                    emp++;
+                }
+            }
+            if(ct==2 && emp==1){
+                for(int j=i; j<= i + 6; j+= 3) {
+                    int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+                    TextView tx = findViewById(id);
+                    if(tx.getText().toString().equals("")){
+                        tx.setText("O");
+                        tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                        col++;
+                        return true;
+                    }
+                }
+            }
+        }
+        ct=0;
+        emp=0;
+        for(int j=2; j<=10; j+=4) {
+            int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+            TextView tx = findViewById(id);
+            if (tx.getText().toString().equals("X")) {
+                ct++;
+            }
+            if(tx.getText().toString().equals("")){
+                emp++;
+            }
+        }
+        if(ct==2 && emp==1){
+            for(int j=2; j<=10; j+=4) {
+                int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+                TextView tx = findViewById(id);
+                if(tx.getText().toString().equals("")){
+                    tx.setText("O");
+                    tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                    col++;
+                    return true;
+                }
+            }
+        }
+        ct=0;
+        emp=0;
+        for(int j=4; j<=8; j+=2){
+            int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+            TextView tx = findViewById(id);
+            if (tx.getText().toString().equals("X")) {
+                ct++;
+            }
+            else if(tx.getText().toString().equals("")){
+                emp++;
+            }
+        }
+        if(ct==2 && emp==1){
+            for(int j=4; j<=8; j+=2) {
+                int id = getResources().getIdentifier("textView" + j, "id", getPackageName());
+                TextView tx = findViewById(id);
+                if(tx.getText().toString().equals("")){
+                    tx.setText("O");
+                    tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                    col++;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public void one() {
+        while (true) {
+            int num = (int) Math.floor(Math.random() * 10);
+            if (num >= 2 && num <= 10) {
+                int id = getResources().getIdentifier("textView" + num, "id", getPackageName());
+                TextView tx = findViewById(id);
+                if (tx.getText().toString().equals("")) {
+                    tx.setText("O");
+                    tx.setBackgroundColor(Color.rgb(255, 87, 34));
+                    col++;
+                    break;
+                }
+            }
+
+        }
+
+    }
 }
